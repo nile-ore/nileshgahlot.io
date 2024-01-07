@@ -107,9 +107,7 @@
         font-size: 30px;
     }
 
-    .container-project::hover {
-        background-image: linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.05));
-    }
+
 
     .header-content h1{
         font-weight: 700;
@@ -160,7 +158,8 @@
     }
 
     .contact{
-        background-image: linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.05)),url("../image/systemdesign.png");
+        /* background-image: linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.05)),url("../image/systemdesign.png"); */
+        background-color: #333;
     }
 
     html,body{
@@ -203,7 +202,7 @@
     }
 
     .row1-project:hover {
-        transform: scale(1.04); 
+        transform: scale(1.04);
     }
 
     .row1 .img-box{
@@ -369,7 +368,6 @@
         padding: 20px;
         color: #f4f4f4;
         text-align: center;
-    
     }
 
     .footer_contact{
