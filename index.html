@@ -199,11 +199,15 @@
     const themeToggle = document.getElementById('theme-toggle');
     const themeIcon = document.getElementById('theme-icon');
     const body = document.body;
-    // Check localStorage
+    // Only apply light mode if explicitly set
     if (localStorage.getItem('theme') === 'light') {
       body.classList.add('light-mode');
       themeIcon.classList.remove('uil-moon');
       themeIcon.classList.add('uil-sun');
+    } else {
+      body.classList.remove('light-mode');
+      themeIcon.classList.remove('uil-sun');
+      themeIcon.classList.add('uil-moon');
     }
     themeToggle.addEventListener('click', () => {
       body.classList.toggle('light-mode');
