@@ -20,7 +20,7 @@
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-body.light-mode {
+:root.light-mode {
     /* LIGHT MODE */
     --bg-color: #f8fafc;         /* Off-white */
     --card-bg: #ffffff;          /* Pure White */
@@ -146,7 +146,9 @@ img {
     justify-content: space-between;
     align-items: center;
     padding: 0 5%;
-    background: rgba(var(--bg-color), 0.8);
+    /* background: rgba(var(--bg-color), 0.8);
+     */
+    background: color-mix(in srgb, var(--bg-color) 85%, transparent);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--card-border);

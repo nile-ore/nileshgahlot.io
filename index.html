@@ -3,51 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nilesh Gahlot — Portfolio</title>
+    <link rel="icon" type="image/png" href="assets/images/favicon.webp">
 
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <!-- Preload critical CSS -->
+    <link rel="preload" href="assets/css/style.css" as="style">
+
+    <!-- Preload hero image (above the fold — do NOT lazy load this one) -->
+    <link rel="preload" as="image" href="assets/images/portfolio_new_image.webp" type="image/webp">
+
+    <!-- Icons: load async so they don't block render -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"></noscript>
 
     <link rel="stylesheet" href="assets/css/style.css">
-
-
-    <title>Portfolio</title>
 </head>
 <body>
-   <div class="site-wrapper">
+  <div class="site-wrapper">
 
-      <nav id="header">
-        <div class="nav-logo">
-            <p class="nav-name">Nilesh</p>
-            <span>.</span>
-        </div>
-        <div class="nav-menu" id="myNavMenu">
-            <ul class="nav_menu_list">
-                <li class="nav_list">
-                    <a href="#home" class="nav-link active-link">Home</a>
-                    <div class="circle"></div>
-                </li>
-                <li class="nav_list">
-                    <a href="#about" class="nav-link">About</a>
-                    <div class="circle"></div>
-                </li>
-                <li class="nav_list">
-                    <a href="#projects" class="nav-link">Projects</a>
-                    <div class="circle"></div>
-                </li>
-                <li class="nav_list">
-                    <a href="#contact" class="nav-link">Contact</a>
-                    <div class="circle"></div>
-                </li>
-            </ul>
-        </div>
-        <div class="nav-menu-btn">
-            <button id="theme-toggle" aria-label="Toggle light/dark mode"><span id="theme-icon" class="uil uil-moon"></span> Theme</button>
-            <i class="uil uil-bars" onclick="myMenuFunction()"></i>
-        </div>
-      </nav>
-
+    <nav id="header">
+      <div class="nav-logo">
+        <p class="nav-name">Nilesh</p>
+        <span>.</span>
+      </div>
+      <div class="nav-menu" id="myNavMenu">
+        <ul class="nav_menu_list">
+          <li class="nav_list"><a href="#home" class="nav-link active-link">Home</a><div class="circle"></div></li>
+          <li class="nav_list"><a href="#about" class="nav-link">About</a><div class="circle"></div></li>
+          <li class="nav_list"><a href="#projects" class="nav-link">Projects</a><div class="circle"></div></li>
+          <li class="nav_list"><a href="#contact" class="nav-link">Contact</a><div class="circle"></div></li>
+        </ul>
+      </div>
+      <div class="nav-menu-btn">
+        <button id="theme-toggle" aria-label="Toggle light/dark mode">
+          <span id="theme-icon" class="uil uil-moon"></span> Theme
+        </button>
+        <i class="uil uil-bars" onclick="myMenuFunction()"></i>
+      </div>
+    </nav>
 
     <main class="main-content">
       <div class="container">
+
         <section class="professional-summary section" id="summary">
           <div class="section-header">
             <h1>Professional Summary</h1>
@@ -66,13 +63,22 @@
               <div class="about-row">
                 <div class="about-info card">
                   <h3>My introduction</h3>
-                  <p>B.E. in Information Technology, Mumbai University (2019-2023, GPA: 8.63/10). Passionate about building robust systems and solving complex problems. Relevant coursework: Applied Mathematics, Discrete Mathematics, Algorithms, Databases, Machine Learning, AI, NLP, Cloud & Distributed Computing.</p>
+                  <p>B.E. in Information Technology, Mumbai University (2019–2023, GPA: 8.63/10). Passionate about building robust systems and solving complex problems. Relevant coursework: Applied Mathematics, Discrete Mathematics, Algorithms, Databases, Machine Learning, AI, NLP, Cloud &amp; Distributed Computing.</p>
                 </div>
                 <div class="about-avatar">
-                  <!-- <img src="assets/images/avatar_new.jpeg" alt="Nilesh Gahlot avatar" /> -->
-                   <img src="assets/images/portfolio_new_image.png" alt="Nilesh Gahlot avatar" />
+                  <picture>
+                    <source srcset="assets/images/portfolio_new_image.webp" type="image/webp">
+                    <img
+                      src="assets/images/portfolio_new_image.png"
+                      alt="Nilesh Gahlot avatar"
+                      width="300"
+                      height="300"
+                      decoding="async"
+                    >
+                  </picture>
                 </div>
               </div>
+
               <div class="about-skills">
                 <div class="skills-box card">
                   <div class="skills-header"><h3>Languages</h3></div>
@@ -87,7 +93,7 @@
                   </div>
                 </div>
                 <div class="skills-box card">
-                  <div class="skills-header"><h3>Backend & Tools</h3></div>
+                  <div class="skills-header"><h3>Backend &amp; Tools</h3></div>
                   <div class="skills-list">
                     <span>Redis</span><span>Linux/Unix</span><span>Git</span><span>Tmux</span><span>Node.js</span><span>Django</span><span>Docker</span><span>APIs</span>
                   </div>
@@ -110,12 +116,14 @@
           <div class="section-content experience-grid">
             <div class="experience-box card">
               <h3>Quant Software Engineer</h3>
-              <span class="exp-company">Swan Capital by Qode Invest, Mumbai</span> <span class="exp-date">Jun 2024 -- Present</span>
+              <span class="exp-company">Swan Capital by Qode Invest, Mumbai</span>
+              <span class="exp-date">Jun 2024 — Present</span>
               <p>Built and optimized high-performance trading and automation systems.</p>
             </div>
             <div class="experience-box card">
               <h3>DevOps and Solace Linux Administrator</h3>
-              <span class="exp-company">National Stock Exchange, Mumbai</span> <span class="exp-date">Jun 2023 -- Jun 2024</span>
+              <span class="exp-company">National Stock Exchange, Mumbai</span>
+              <span class="exp-date">Jun 2023 — Jun 2024</span>
               <p>Managed Solace infrastructure and automated monitoring/reporting for large-scale deployments.</p>
             </div>
           </div>
@@ -126,52 +134,85 @@
             <h1>Projects</h1>
           </div>
           <div class="section-content project-grid">
+
             <div class="project-box card">
-              <img src="assets/images/texteditor.png" alt="Next Editor">
-              <a href="https://github.com/nile-ore/Next_Editor"><h3>Next Editor -- Python Text Editor</h3></a>
-              <p>A full-featured GUI-based text and Markdown editor built using Python and Tkinter. Provides file operations, rich text formatting, theming, find & replace, and real-time word/character count in a desktop app interface.<br><b>Tech Stack:</b> Python, Tkinter, Ttk, OS, FileDialog, Font, ColorChooser, MessageBox</p>
+              <picture>
+                <source srcset="assets/images/texteditor.webp" type="image/webp">
+                <img
+                  src="assets/images/texteditor.png"
+                  alt="Next Editor — Python Text Editor"
+                  width="400"
+                  height="250"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
+              <a href="https://github.com/nile-ore/Next_Editor"><h3>Next Editor — Python Text Editor</h3></a>
+              <p>A full-featured GUI-based text and Markdown editor built using Python and Tkinter. Provides file operations, rich text formatting, theming, find &amp; replace, and real-time word/character count.<br><b>Tech Stack:</b> Python, Tkinter, Ttk, OS, FileDialog, Font, ColorChooser, MessageBox</p>
             </div>
+
             <div class="project-box card">
-              <img src="assets/images/Jaytm.png" alt="JayTM">
-              <a href="https://github.com/nile-ore/Jaytm"><h3>JayTM -- Java ATM Simulator</h3></a>
-              <p>ATM simulation project with secure login, password reset, balance inquiry, withdrawal, and mini statement features using JDBC.<br><b>Tech Stack:</b> Java, MySQL, JDBC</p>
+              <picture>
+                <source srcset="assets/images/Jaytm.webp" type="image/webp">
+                <img
+                  src="assets/images/Jaytm.png"
+                  alt="JayTM — Java ATM Simulator"
+                  width="400"
+                  height="250"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
+              <a href="https://github.com/nile-ore/Jaytm"><h3>JayTM — Java ATM Simulator</h3></a>
+              <p>ATM simulation with secure login, password reset, balance inquiry, withdrawal, and mini statement using JDBC.<br><b>Tech Stack:</b> Java, MySQL, JDBC</p>
             </div>
+
             <div class="project-box card">
-              <img src="assets/images/Plant_Health_Analysis.png" alt="Potato Disease Classifier">
+              <picture>
+                <source srcset="assets/images/Plant_Health_Analysis.webp" type="image/webp">
+                <img
+                  src="assets/images/Plant_Health_Analysis.png"
+                  alt="Potato Disease Classifier"
+                  width="400"
+                  height="250"
+                  loading="lazy"
+                  decoding="async"
+                >
+              </picture>
               <h3>Potato Disease Classifier</h3>
-              <p>Trained a Convolutional Neural Network (CNN) model to classify potato leaf diseases with 92% accuracy using labeled image datasets.<br><b>Tech Stack:</b> Python, TensorFlow, CNN, OpenCV</p>
+              <p>Trained a CNN model to classify potato leaf diseases with 92% accuracy using labeled image datasets.<br><b>Tech Stack:</b> Python, TensorFlow, CNN, OpenCV</p>
             </div>
+
             <div class="project-box card">
               <h3><a href="https://fd-calculator-mui.netlify.app/">FD Returns Calculator</a></h3>
-              <p>Deployed a responsive web app to compute fixed deposit maturity values using dynamic sliders and inputs.<br><b>Tech Stack:</b> React.js, Material UI, JavaScript, Netlify</p>
+              <p>Responsive web app to compute fixed deposit maturity values using dynamic sliders and inputs.<br><b>Tech Stack:</b> React.js, Material UI, JavaScript, Netlify</p>
             </div>
+
           </div>
         </section>
 
         <section class="section" id="achievements">
           <div class="section-header">
-            <h1>Achievements & Certifications</h1>
+            <h1>Achievements &amp; Certifications</h1>
           </div>
           <div class="section-content achievements-list card">
             <ul>
-              <li>Solved 600+ LeetCode problems with 300+ day streak (Top 0.4%) : <a href="https://leetcode.com/u/nilesh_gahlot09/">LeetCode Profile</a></li>
+              <li>Solved 600+ LeetCode problems with 300+ day streak (Top 0.4%): <a href="https://leetcode.com/u/nilesh_gahlot09/">LeetCode Profile</a></li>
               <li>AIR 2.6k / 40,000+ in CodeKaze; Ranked 2nd in college.</li>
-              <li>Advanced DSA in Java and Python -- Coding Ninjas</li>
+              <li>Advanced DSA in Java and Python — Coding Ninjas</li>
               <li>Solace Certified Solutions Consultant</li>
               <li>Solace Certified Developer Practitioner</li>
               <li>Solace Certified Event Driven Architecture Practitioner</li>
             </ul>
           </div>
         </section>
+
       </div>
     </main>
 
-
     <footer>
       <div class="container">
-        <div class="top-footer">
-          <p>Nile.</p>
-        </div>
+        <div class="top-footer"><p>Nile.</p></div>
         <div class="middle-footer">
           <ul class="footer-menu">
             <li class="footer_menu_list"><a href="#home">Home</a></li>
@@ -181,9 +222,15 @@
           </ul>
         </div>
         <div class="footer-social-icons">
-          <a href="https://www.linkedin.com/in/nileshgahlot/"><div class="icon"><i class="uil uil-linkedin-alt"></i></div></a>
-          <a href="https://instagram.com/nileshgahlot__"><div class="icon"><i class="uil uil-instagram"></i></div></a>
-          <a href="https://github.com/nile-ore/"><div class="icon"><i class="uil uil-github-alt"></i></div></a>
+          <a href="https://www.linkedin.com/in/nileshgahlot/" aria-label="LinkedIn">
+            <div class="icon"><i class="uil uil-linkedin-alt"></i></div>
+          </a>
+          <a href="https://instagram.com/nileshgahlot__" aria-label="Instagram">
+            <div class="icon"><i class="uil uil-instagram"></i></div>
+          </a>
+          <a href="https://github.com/nile-ore/" aria-label="GitHub">
+            <div class="icon"><i class="uil uil-github-alt"></i></div>
+          </a>
         </div>
         <div class="bottom-footer">
           <p>&copy; <a href="#home">Nilesh Gahlot</a></p>
@@ -191,38 +238,45 @@
       </div>
     </footer>
 
-    </div>
-    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="assets/js/main.js"></script>
-    <script>
-    // Theme toggle logic with persistence
-    const themeToggle = document.getElementById('theme-toggle');
-    const themeIcon = document.getElementById('theme-icon');
-    const body = document.body;
-    // Only apply light mode if explicitly set
-    if (localStorage.getItem('theme') === 'light') {
-      body.classList.add('light-mode');
-      themeIcon.classList.remove('uil-moon');
-      themeIcon.classList.add('uil-sun');
-    } else {
-      body.classList.remove('light-mode');
-      themeIcon.classList.remove('uil-sun');
-      themeIcon.classList.add('uil-moon');
+  </div>
+
+  <script defer src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+  <script defer src="https://unpkg.com/scrollreveal"></script>
+  <script defer src="assets/js/main.js"></script>
+
+  <script>
+    // Runs after DOM is fully parsed
+    const btn  = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+    const rootElem = document.documentElement; // Targets the <html> tag
+
+    // 1. Safely check localStorage to prevent script crashes
+    try {
+      if (localStorage.getItem('theme') === 'light') {
+        rootElem.classList.add('light-mode');
+        icon.classList.remove('uil-moon');
+        icon.classList.add('uil-sun');
+      }
+    } catch (err) {
+      console.warn("localStorage access denied. Defaulting to dark theme.");
     }
-    themeToggle.addEventListener('click', () => {
-      body.classList.toggle('light-mode');
-      const isLight = body.classList.contains('light-mode');
-      if (isLight) {
-        themeIcon.classList.remove('uil-moon');
-        themeIcon.classList.add('uil-sun');
-        localStorage.setItem('theme', 'light');
-      } else {
-        themeIcon.classList.remove('uil-sun');
-        themeIcon.classList.add('uil-moon');
-        localStorage.setItem('theme', 'dark');
+
+    // 2. Toggle listener
+    btn.addEventListener('click', function () {
+      const isLight = rootElem.classList.toggle('light-mode');
+      
+      // Swap icons based on state
+      icon.classList.toggle('uil-moon', !isLight);
+      icon.classList.toggle('uil-sun', isLight);
+      
+      // Safely save to localStorage
+      try {
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      } catch (err) { 
+        // Do nothing if blocked
       }
     });
-    </script>
+  </script>
+
 </body>
 </html>
