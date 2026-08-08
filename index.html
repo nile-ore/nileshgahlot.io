@@ -17,7 +17,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="assets/css/style.css">
+<!-- ?v= busts caches left by the previous site, which used the same paths -->
+<link rel="stylesheet" href="assets/css/style.css?v=2026a">
 </head>
 <body>
 
@@ -54,6 +55,7 @@
   <h1 class="sr-only">Nilesh Gahlot — Quantitative Developer, Mumbai</h1>
 
   <div id="stage" class="film__stage" aria-hidden="true"></div>
+  <div class="film__loading" aria-hidden="true">loading the film…</div>
 
   <!-- broadcast lower-third -->
   <div class="film__lt" id="lowerThird" aria-hidden="true">
@@ -261,7 +263,7 @@
 </footer>
 
 <script>window.SCENE_FACE = 'assets/images/face.jpg';</script>
-<script src="assets/js/main.js" defer></script>
-<script type="module" src="assets/js/scene3d.js"></script>
+<script src="assets/js/main.js?v=2026a" defer></script>
+<script type="module" src="assets/js/scene3d.js?v=2026a"></script>
 </body>
 </html>

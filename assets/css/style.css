@@ -177,6 +177,21 @@ ul, ol { list-style: none; }
 .film__stage.is-ready { opacity: 1; }
 .film__stage canvas { display: block; width: 100%; height: 100%; }
 
+/* shown while Three.js downloads on slow connections; also self-dismisses
+   after 12s so a WebGL-less browser isn't stuck on "loading" forever */
+.film__loading {
+  position: absolute; left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  font: 500 12px/1 var(--mono);
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--ink-3);
+  animation: loading-pulse 1.6s ease-in-out infinite, loading-bye .8s 12s forwards;
+  pointer-events: none;
+}
+.film__stage.is-ready + .film__loading { display: none; }
+@keyframes loading-pulse { 50% { opacity: .35; } }
+@keyframes loading-bye { to { opacity: 0; visibility: hidden; } }
+
 /* broadcast lower-third */
 .film__lt {
   position: absolute;
