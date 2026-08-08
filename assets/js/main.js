@@ -1,118 +1,105 @@
-/* ==========================================================
-   1. NAVIGATION MENU (MOBILE)
-========================================================== */
-function myMenuFunction() {
-    var menuBtn = document.getElementById("myNavMenu");
-    // Toggle the 'responsive' class to show/hide the menu
-    if (menuBtn.className === "nav-menu") {
-        menuBtn.className += " responsive";
-    } else {
-        menuBtn.className = "nav-menu";
-    }
-}
+/* =========================================================================
+   main.js — chrome: theme, nav, scroll-spy, reveal.
+   The film itself lives in scene.js.
+   ========================================================================= */
+(function () {
+  'use strict';
 
-/* ==========================================================
-   2. SHADOW ON SCROLL
-========================================================== */
-// Adds a subtle shadow to the header when you scroll down
-window.onscroll = function() { headerShadow() };
+  const root = document.documentElement;
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-function headerShadow() {
-    const navHeader = document.getElementById("header");
+  /* ---------- theme (paper by default; .dark = inverted plate) ---------- */
+  const THEME_KEY = 'ng-theme';
 
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-        navHeader.style.boxShadow = "0 1px 6px rgba(0, 0, 0, 0.1)";
-        navHeader.style.height = "70px";
-        navHeader.style.lineHeight = "70px";
-    } else {
-        navHeader.style.boxShadow = "none";
-        navHeader.style.height = "80px";
-        navHeader.style.lineHeight = "80px";
-    }
-}
+  function readStored() {
+    try { return localStorage.getItem(THEME_KEY); } catch (e) { return null; }
+  }
+  function store(v) {
+    try { localStorage.setItem(THEME_KEY, v); } catch (e) { /* private mode */ }
+  }
 
-/* ==========================================================
-   3. DARK / LIGHT MODE TOGGLE
-========================================================== */
-const themeToggle = document.getElementById('theme-toggle');
-const themeIcon = document.getElementById('theme-icon');
-const body = document.body;
+  const stored = readStored();
+  if (stored === 'dark') {
+    root.classList.add('dark');
+  } else if (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    root.classList.add('dark');
+  }
 
-// Check local storage for saved theme preference
-const savedTheme = localStorage.getItem('theme');
-
-if (savedTheme === 'light') {
-    body.classList.add('light-mode');
-    themeIcon.classList.remove('uil-moon');
-    themeIcon.classList.add('uil-sun');
-}
-
-// Toggle logic
-themeToggle.addEventListener('click', () => {
-    body.classList.toggle('light-mode');
-    const isLight = body.classList.contains('light-mode');
-    
-    // Switch Icon
-    if (isLight) {
-        themeIcon.classList.remove('uil-moon');
-        themeIcon.classList.add('uil-sun');
-        localStorage.setItem('theme', 'light');
-    } else {
-        themeIcon.classList.remove('uil-sun');
-        themeIcon.classList.add('uil-moon');
-        localStorage.setItem('theme', 'dark');
-    }
-});
-
-/* ==========================================================
-   4. SCROLL REVEAL ANIMATION
-========================================================== */
-// This makes elements fade in as you scroll
-const sr = ScrollReveal({
-    origin: 'top',
-    distance: '60px',
-    duration: 2000,
-    reset: true     // Animations repeat when you scroll back up
-});
-
-// -- Reveal General Sections --
-sr.reveal('.section-header', { delay: 100 });
-sr.reveal('.professional-summary', { delay: 200 });
-
-// -- Reveal About Section --
-sr.reveal('.about-info', { origin: 'left', delay: 200 });
-sr.reveal('.about-avatar', { origin: 'right', delay: 200 });
-sr.reveal('.skills-box', { interval: 200 }); // Staggers the animation for skills
-
-// -- Reveal Experience & Projects --
-sr.reveal('.experience-box', { interval: 200 });
-sr.reveal('.project-box', { interval: 200 });
-sr.reveal('.achievements-list', { delay: 200 });
-
-/* ==========================================================
-   5. SCROLL ACTIVE LINK
-========================================================== */
-// Highlights the navbar link corresponding to the current section
-const sections = document.querySelectorAll('section[id]');
-
-function scrollActive() {
-    const scrollY = window.scrollY;
-
-    sections.forEach(current => {
-        const sectionHeight = current.offsetHeight;
-        const sectionTop = current.offsetTop - 100; // Offset for header height
-        const sectionId = current.getAttribute('id');
-        
-        // Find the link that points to this section
-        const sectionLink = document.querySelector('.nav-menu a[href*=' + sectionId + ']');
-
-        if (sectionLink) {
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                sectionLink.classList.add('active-link');
-            } else {
-                sectionLink.classList.remove('active-link');
-            }
-        }
+  const themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function () {
+      const isDark = root.classList.toggle('dark');
+      store(isDark ? 'dark' : 'paper');
+      // the film reads its colours from CSS vars — tell it to repaint
+      window.dispatchEvent(new CustomEvent('ng:theme'));
     });
-}
-window.addEventListener('scroll', scrollActive);
+  }
+
+  /* ---------- mobile nav ---------- */
+  const burger = document.getElementById('burger');
+  const links = document.getElementById('navLinks');
+
+  if (burger && links) {
+    burger.addEventListener('click', function () {
+      const open = links.classList.toggle('is-open');
+      burger.setAttribute('aria-expanded', String(open));
+    });
+    links.addEventListener('click', function (e) {
+      if (e.target.closest('a')) {
+        links.classList.remove('is-open');
+        burger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  /* ---------- nav border on scroll ---------- */
+  const nav = document.getElementById('nav');
+  let ticking = false;
+
+  function onScroll() {
+    if (nav) nav.classList.toggle('is-stuck', window.scrollY > 12);
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { window.requestAnimationFrame(onScroll); ticking = true; }
+  }, { passive: true });
+  onScroll();
+
+  /* ---------- scroll spy ---------- */
+  const navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav__link'));
+  const sections = navLinks
+    .map(function (a) { return document.querySelector(a.getAttribute('href')); })
+    .filter(Boolean);
+
+  if (sections.length && 'IntersectionObserver' in window) {
+    const spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        navLinks.forEach(function (a) {
+          a.classList.toggle('is-active', a.getAttribute('href') === '#' + en.target.id);
+        });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(function (s) { spy.observe(s); });
+  }
+
+  /* ---------- reveal on enter ---------- */
+  const revealables = document.querySelectorAll('[data-reveal]');
+  if (!('IntersectionObserver' in window) || reduced) {
+    revealables.forEach(function (el) { el.classList.add('is-in'); });
+  } else {
+    const io = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        en.target.classList.add('is-in');
+        obs.unobserve(en.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    revealables.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------- footer year ---------- */
+  const yr = document.getElementById('yr');
+  if (yr) yr.textContent = String(new Date().getFullYear());
+
+})();
