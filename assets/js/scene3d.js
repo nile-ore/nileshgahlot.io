@@ -27,7 +27,7 @@ function boot(host) {
   const root = document.documentElement;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const LOOP = 64;
+  const LOOP = 56;
   const TAU = Math.PI * 2;
   let dark = root.classList.contains('dark');
 
@@ -387,52 +387,6 @@ function boot(host) {
     bull = rig; bullReady = true;
   }, undefined, () => {});
 
-  /* =============================================================== THE BEAR
-     No CC0 bear model exists in the sources I can reach, so it is built from
-     overlapping ellipsoids. Against a white void the silhouette is all that
-     reads, and a merged mass of ellipsoids gives a convincing one. It yawns —
-     that is the whole point of the bear. */
-  const bearJaw = new THREE.Group();
-  const bear = new THREE.Group();
-  {
-    // Everything static bakes into ONE mesh; only the jaw stays separate so
-    // it can hinge. Head parts carry the head offset (7.8, 7.6, 0) baked in.
-    const parts = [
-      bakedSphere(0, 6.0, 0, 5.3, 3.4, 3.2),          // barrel
-      bakedSphere(-3.6, 5.6, 0, 3.2, 3.1, 3.0),       // haunch
-      bakedSphere(2.4, 8.0, 0, 2.9, 2.5, 2.8),        // shoulder hump — the bear tell
-      bakedSphere(4.8, 6.9, 0, 2.2, 2.1, 2.1),        // chest
-      bakedSphere(6.2, 7.4, 0, 1.5, 1.5, 1.5),        // neck
-      bakedSphere(7.8, 7.6, 0, 2.0, 1.8, 1.75),       // skull
-      bakedSphere(9.55, 7.05, 0, 1.35, 0.95, 0.95),   // muzzle
-      bakedSphere(7.4, 9.25, 1.15, 0.68, 0.68, 0.4),  // ears — round, the tell
-      bakedSphere(7.4, 9.25, -1.15, 0.68, 0.68, 0.4),
-      bakedSphere(10.7, 7.0, 0, 0.38, 0.34, 0.38)     // nose
-    ];
-    const leg = (x, z, h) => {
-      parts.push(bakedCyl(1.2, 1.45, h, x, h / 2, z));
-      parts.push(bakedSphere(x, 0.6, z + 0.5, 1.5, 0.65, 1.85)); // paw
-    };
-    leg(3.5, 2.1, 5.0); leg(3.5, -2.1, 5.0);
-    leg(-3.0, 2.2, 4.7); leg(-3.0, -2.2, 4.7);
-    const body = new THREE.Mesh(mergeGeometries(parts), bodyMat);
-    body.castShadow = true;
-    bear.add(body);
-
-    bearJaw.position.set(8.3, 6.85, 0);               // head offset + jaw pivot
-    bear.add(bearJaw);
-    const jawMesh = new THREE.Mesh(bakedSphere(1.1, -0.25, 0, 1.15, 0.55, 0.75), bodyMat);
-    jawMesh.castShadow = true;
-    bearJaw.add(jawMesh);
-    bearJaw.add(new THREE.Mesh(bakedSphere(0.9, 0.1, 0, 0.95, 0.5, 0.6),
-      new THREE.MeshStandardMaterial({ color: 0x120f0c, roughness: 0.9 })));
-
-    bear.position.set(-195, 0, -35);
-    bear.rotation.y = 3.6;                   // 3/4 to the passing camera
-    bear.scale.setScalar(1.15);
-    scene.add(bear);
-  }
-
   /* ====================================================== THE COAT FIGURE
      Original geometry — the man in the reference is a real person and is not
      lifted from it. The photo supplies only the face. */
@@ -545,8 +499,8 @@ function boot(host) {
     { c: [-140, 20,-256], t: [-120, 11,-190] },// 7 bull, from the south
     // Height keys change gently — steep drops make the spline overshoot and
     // dip the camera under the floor.
-    { c: [-268, 14, -110], t: [-194,  6, -38] }, // 8 bear, low approach
-    { c: [-252, 12,  40], t: [-196,  6, -34] }, // 9 bear, passing 3/4
+    { c: [-250, 16, -90], t: [-170,  8,  30] }, // 8 void drift — empty beat
+    { c: [-225, 13,  80], t: [-155,  7, 160] }, // 9 figure emerges from the fog
     // Figure beat approaches from the SOUTH: from the west, figure, gallery
     // panel and the python's head line up and the half-fogged head floats in
     // frame like a severed pipe.
@@ -564,8 +518,7 @@ function boot(host) {
     { a: 0.01, b: 0.21, k: '01 · Pythonidae', t: 'PYTHON', s: 'Primary language since 2019 — Python and C++' },
     { a: 0.26, b: 0.41, k: '02 · exchange infrastructure', t: 'COLOCATION', s: '18 Solace appliances · 60+ RHEL servers · NSE' },
     { a: 0.49, b: 0.63, k: '03 · Bos taurus', t: 'THE BULL', s: 'Permanent long bias' },
-    { a: 0.65, b: 0.79, k: '04 · Ursidae', t: 'THE BEAR', s: 'Occasionally. Mostly it yawns.' },
-    { a: 0.83, b: 0.98, k: '05 · Homo sapiens', t: 'NILESH GAHLOT', s: 'Quant Developer — backtesting · execution · risk' }
+    { a: 0.79, b: 0.98, k: '04 · Homo sapiens', t: 'NILESH GAHLOT', s: 'Quant Developer — backtesting · execution · risk' }
   ];
   const ltEl = document.getElementById('lowerThird');
   const ltK = document.getElementById('ltKicker');
@@ -589,12 +542,6 @@ function boot(host) {
     const wob = u * TAU;
 
     updateSnake(u);
-
-    // the bear yawns four times a loop — integer cycles keep the loop closed
-    const yc = (u * 4) % 1;
-    const yawn = Math.max(0, Math.sin((Math.min(1, Math.max(0, (yc - 0.55) / 0.30))) * Math.PI));
-    bearJaw.rotation.z = -yawn * 0.62;
-    bear.position.y = Math.sin(wob * 8) * 0.10;         // breath
 
     figure.rotation.y = 0.5 + Math.sin(wob) * 0.05;
 
@@ -669,7 +616,7 @@ function boot(host) {
     u() { return clock; },
     LOOP,
     ready() { return bullReady; },
-    dbg() { return { snake, headGroup, rackCluster, bear, figure, bullRig: bull, floor }; },
+    dbg() { return { snake, headGroup, rackCluster, figure, bullRig: bull, floor }; },
     info() { return { calls: renderer.info.render.calls, tris: renderer.info.render.triangles }; },
     // cast a ray through NDC (nx, ny) and report what it hits on the snake
     ray(nx, ny) {
