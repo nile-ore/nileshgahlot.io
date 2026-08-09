@@ -22,7 +22,9 @@
   --accent-dim: rgba(143, 47, 30, 0.08);
 
   --sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  /* display face — a technical grotesk (the old soft serif read editorial,
+     not quant). Variable keeps its name so every usage picks this up. */
+  --serif: 'Space Grotesk', 'Inter', -apple-system, sans-serif;
   --mono:  'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
   --nav-h: 60px;
@@ -220,8 +222,8 @@ ul, ol { list-style: none; }
   text-transform: uppercase;
 }
 .film__lt-title {
-  font: 600 clamp(1.7rem, 4.2vw, 2.6rem)/1.04 var(--serif);
-  letter-spacing: -.015em;
+  font: 700 clamp(1.7rem, 4.2vw, 2.6rem)/1.04 var(--serif);
+  letter-spacing: .035em;   /* uppercase grotesk wants air, not compression */
   color: var(--ink);
 }
 .film__lt-sub {
