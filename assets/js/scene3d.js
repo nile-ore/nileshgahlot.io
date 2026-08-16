@@ -499,8 +499,10 @@ function boot(host) {
     { c: [-140, 20,-256], t: [-120, 11,-190] },// 7 bull, from the south
     // Height keys change gently — steep drops make the spline overshoot and
     // dip the camera under the floor.
-    { c: [-250, 16, -90], t: [-170,  8,  30] }, // 8 void drift — empty beat
-    { c: [-225, 13,  80], t: [-155,  7, 160] }, // 9 figure emerges from the fog
+    // One transit beat only (two left a ~9s dead stretch after the bull);
+    // the reclaimed beat goes to the figure — arrive early, orbit it.
+    { c: [-230, 15, -40], t: [-160,  8,  90] }, // 8 transit — figure still in fog
+    { c: [-205, 11, 150], t: [-152,  7, 178] }, // 9 figure, 3/4 from the west
     // Figure beat approaches from the SOUTH: from the west, figure, gallery
     // panel and the python's head line up and the half-fogged head floats in
     // frame like a severed pipe.
@@ -518,7 +520,7 @@ function boot(host) {
     { a: 0.01, b: 0.21, k: '01 · Pythonidae', t: 'PYTHON', s: 'Primary language since 2019 — Python and C++' },
     { a: 0.26, b: 0.41, k: '02 · exchange infrastructure', t: 'COLOCATION', s: '18 Solace appliances · 60+ RHEL servers · NSE' },
     { a: 0.49, b: 0.63, k: '03 · Bos taurus', t: 'THE BULL', s: 'Permanent long bias' },
-    { a: 0.79, b: 0.98, k: '04 · Homo sapiens', t: 'NILESH GAHLOT', s: 'Quant Developer — backtesting · execution · risk' }
+    { a: 0.72, b: 0.98, k: '04 · Homo sapiens', t: 'NILESH GAHLOT', s: 'Quant Developer — backtesting · execution · risk' }
   ];
   const ltEl = document.getElementById('lowerThird');
   const ltK = document.getElementById('ltKicker');
