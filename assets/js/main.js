@@ -1,39 +1,12 @@
 /* =========================================================================
-   main.js — chrome: theme, nav, scroll-spy, reveal.
-   The film itself lives in scene.js.
+   main.js — chrome: nav, scroll-spy, reveal.
+   The film itself lives in scene3d.js.
    ========================================================================= */
 (function () {
   'use strict';
 
   const root = document.documentElement;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* ---------- theme (paper by default; .dark = inverted plate) ---------- */
-  const THEME_KEY = 'ng-theme';
-
-  function readStored() {
-    try { return localStorage.getItem(THEME_KEY); } catch (e) { return null; }
-  }
-  function store(v) {
-    try { localStorage.setItem(THEME_KEY, v); } catch (e) { /* private mode */ }
-  }
-
-  const stored = readStored();
-  if (stored === 'dark') {
-    root.classList.add('dark');
-  } else if (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    root.classList.add('dark');
-  }
-
-  const themeBtn = document.getElementById('themeToggle');
-  if (themeBtn) {
-    themeBtn.addEventListener('click', function () {
-      const isDark = root.classList.toggle('dark');
-      store(isDark ? 'dark' : 'paper');
-      // the film reads its colours from CSS vars — tell it to repaint
-      window.dispatchEvent(new CustomEvent('ng:theme'));
-    });
-  }
 
   /* ---------- mobile nav ---------- */
   const burger = document.getElementById('burger');

@@ -4,11 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nilesh Gahlot — Quantitative Developer</title>
-<meta name="description" content="Quantitative developer building reliable, low-latency systems for automated trading — Python, C++, event-driven architecture. NSE exchange infrastructure → Indian equities → crypto.">
+<meta name="description" content="Quantitative developer with 3.5 years across exchange infrastructure and production trading systems — multi-exchange OMS, execution, derivatives backtesting and strategy research in Python and C++.">
 
 <meta property="og:title" content="Nilesh Gahlot — Quantitative Developer">
-<meta property="og:description" content="Quant Developer — OMS, execution, backtesting and risk systems for automated trading. NSE exchange infrastructure → Indian equities → crypto.">
+<meta property="og:description" content="Quant Developer — multi-exchange OMS/RMS, execution, derivatives backtesting and strategy research. NSE exchange infrastructure → Indian equities → crypto.">
 <meta property="og:type" content="website">
+
+<meta name="theme-color" content="#f3f1ec">
 
 <link rel="icon" type="image/webp" href="assets/images/favicon.webp">
 <link rel="alternate icon" type="image/png" href="assets/images/favicon.png">
@@ -18,7 +20,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 
 <!-- ?v= busts caches left by the previous site, which used the same paths -->
-<link rel="stylesheet" href="assets/css/style.css?v=2026b">
+<link rel="stylesheet" href="assets/css/style.css?v=2026t">
 </head>
 <body>
 
@@ -32,15 +34,12 @@
     <nav class="nav__links" id="navLinks" aria-label="Primary">
       <a href="#position" class="nav__link">01 / Position</a>
       <a href="#track"    class="nav__link">02 / Track</a>
-      <a href="#signals"  class="nav__link">03 / Signals</a>
-      <a href="#contact"  class="nav__link">04 / Contact</a>
+      <a href="#builds"   class="nav__link">03 / Builds</a>
+      <a href="#signals"  class="nav__link">04 / Signals</a>
+      <a href="#contact"  class="nav__link">05 / Contact</a>
     </nav>
 
     <div class="nav__actions">
-      <button class="iconbtn" id="themeToggle" aria-label="Toggle colour theme" title="Toggle theme">
-        <svg class="i-moon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
-        <svg class="i-sun" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-      </button>
       <button class="iconbtn nav__burger" id="burger" aria-label="Menu" aria-expanded="false">
         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
       </button>
@@ -55,7 +54,7 @@
   <h1 class="sr-only">Nilesh Gahlot — Quantitative Developer, Mumbai</h1>
 
   <div id="stage" class="film__stage" aria-hidden="true"></div>
-  <div class="film__loading" aria-hidden="true">loading the film…</div>
+  <div class="film__loading" aria-hidden="true">rolling…</div>
 
   <!-- broadcast lower-third -->
   <div class="film__lt" id="lowerThird" aria-hidden="true">
@@ -81,8 +80,9 @@
   <div class="position">
     <div class="position__body" data-reveal>
       <p class="lead">
-        Quantitative developer building reliable, low-latency systems for
-        automated trading — Python, C++ and event-driven architecture.
+        Quantitative developer with 3.5 years across exchange infrastructure
+        and production trading systems — multi-exchange OMS, execution,
+        derivatives backtesting and strategy research in Python and C++.
       </p>
       <p>
         I started on the exchange side. At the <strong>National Stock
@@ -93,12 +93,14 @@
         load, and that latency is a property of the whole path.
       </p>
       <p>
-        Then buy-side. At <strong>Qode</strong> I built an ultra-low-latency
-        execution system in Python processing thousands of orders per minute on
-        portfolios valued in hundreds of crores — and re-engineered the pipeline
+        Then buy-side. At <strong>Qode</strong> I built the firm’s order
+        execution system in Python — 2,000+ orders a minute at peak rebalances
+        across portfolios totalling $50M+ AUM — and re-engineered the pipeline
         to an 8× latency reduction. Now at <strong>9Point Capital</strong> I
-        build the OMS, backtesting and risk systems behind automated crypto
-        trading across Binance, Bybit, Deribit, Hyperliquid, Lighter and Delta.
+        build the asynchronous C++ and Python OMS and RMS behind automated
+        perpetual-futures and options trading across Binance, Bybit, Deribit,
+        Hyperliquid, Lighter and Delta, and research the strategies that run on
+        it.
       </p>
       <p class="muted">
         B.E. Information Technology, Mumbai University · 2019–2023 · GPA 8.63/10.
@@ -121,15 +123,15 @@
         </div>
         <div class="stack__row">
           <dt>Systems</dt>
-          <dd>Redis · Linux · Docker · Solace · AWS · Node.js</dd>
+          <dd>Redis · Linux · Docker · Solace · AWS · MongoDB · MySQL</dd>
         </div>
         <div class="stack__row">
           <dt>Domain</dt>
-          <dd>OMS · Execution · Backtesting · Risk · Market data</dd>
+          <dd>OMS · RMS · Execution · Backtesting · Options &amp; perps</dd>
         </div>
         <div class="stack__row">
           <dt>Research</dt>
-          <dd>Pandas · NumPy · Jupyter · Streamlit · TensorFlow</dd>
+          <dd>Pandas · NumPy · SciPy · Jupyter · TensorFlow</dd>
         </div>
       </dl>
     </aside>
@@ -155,12 +157,12 @@
         <h3 class="tl__role">Quantitative Developer</h3>
         <p class="tl__org">9Point Capital · Mumbai</p>
         <ul class="tl__points">
-          <li>Designed and implemented a high-performance <strong>Order Management System</strong> supporting automated trading across Binance, Bybit, Deribit, Hyperliquid, Lighter and Delta.</li>
-          <li>Built a futures &amp; options <strong>backtesting framework</strong>; backtested and deployed long/short and delta-neutral strategies for crypto perps and options in Python and C++.</li>
-          <li>Real-time strategy dashboards and a robust <strong>Risk Management System</strong> for operational and trading risk controls.</li>
+          <li>Designed and built an asynchronous C++ and Python <strong>OMS and RMS</strong> for automated trading across Binance, Bybit, Deribit, Hyperliquid, Lighter and Delta — perpetual futures and options.</li>
+          <li>WebSocket exchange connectivity and execution workflows: Binance trading events processed within <strong>~2 ms</strong>, <strong>~4 ms</strong> end-to-end submit-to-fill confirmation for taker orders under normal market conditions.</li>
+          <li>Quantitative research and strategy development for futures and options — high-frequency microstructure signals, options Greeks and volatility modelling, RMS risk-limit frameworks — on a <strong>custom backtesting engine</strong>.</li>
         </ul>
         <ul class="tl__tags">
-          <li>Crypto</li><li>OMS</li><li>Backtesting</li><li>Risk</li><li>C++</li>
+          <li>Crypto</li><li>OMS / RMS</li><li>Options</li><li>Research</li><li>C++</li>
         </ul>
       </div>
     </li>
@@ -173,8 +175,8 @@
         <h3 class="tl__role">Quant Software Engineer</h3>
         <p class="tl__org">Qode · Mumbai</p>
         <ul class="tl__points">
-          <li>Built an ultra-low-latency <strong>execution system</strong> in Python — thousands of orders per minute on portfolios worth hundreds of crores in AUM.</li>
-          <li>Re-engineered the pipeline for an <strong>8× latency reduction</strong>: Redis-backed real-time monitoring, multithreading/multiprocessing, optimised server configs — better fills, less slippage.</li>
+          <li>Built the firm’s <strong>order execution system</strong> in Python, routing 2,000+ orders a minute at peak rebalances across portfolios totalling $50M+ AUM.</li>
+          <li>Re-engineered the pipeline for an <strong>8× latency reduction</strong> over the previous platform: Redis-backed real-time monitoring, multithreading/multiprocessing, optimised server configs — better fills, less slippage.</li>
           <li>Trade validation, OMS, compliance and risk checks; Python backtesting &amp; research framework; presented systems to clients and fund managers.</li>
         </ul>
         <ul class="tl__tags">
@@ -204,14 +206,68 @@
 </section>
 
 
-<!-- ================= 03 SIGNALS ================= -->
-<section class="section" id="signals">
+<!-- ================= 03 BUILDS ================= -->
+<section class="section" id="builds">
   <div class="section__head" data-reveal>
     <span class="section__num">03</span>
+    <h2 class="section__title">Builds</h2>
+    <p class="section__kicker">Things I built to find out how they work.</p>
+  </div>
+
+  <div class="builds">
+    <a class="build" href="https://github.com/nile-ore/FastAndFurious" target="_blank" rel="noopener" data-reveal>
+      <span class="build__k">Low-latency exchange core · C++20</span>
+      <h3 class="build__t">FastAndFurious</h3>
+      <p class="build__d">
+        A price-time priority matching engine with no allocation on the hot
+        path and a cache-friendly flat price-level book, wait-free SPSC ring
+        buffers between cores, and a deterministic sequencer whose mmap journal
+        replays to a bit-identical book.
+      </p>
+      <dl class="build__nums">
+        <div><dt>32M+</dt><dd>orders/sec, one core</dd></div>
+        <div><dt>~30 ns</dt><dd>per order</dd></div>
+        <div><dt>333 ns</dt><dd>p50 end-to-end, 4 threads</dd></div>
+      </dl>
+      <span class="build__go">github.com/nile-ore/FastAndFurious →</span>
+    </a>
+
+    <a class="build" href="https://nile-ore.github.io/manufactured-move/" target="_blank" rel="noopener" data-reveal>
+      <span class="build__k">Market-impact simulation · Python</span>
+      <h3 class="build__t">Manufactured Move</h3>
+      <p class="build__d">
+        Simulates how trading a stock index moves the price of its linked
+        options — permanent and temporary impact (Almgren–Chriss) with
+        Black–Scholes settlement — and decomposes the P&amp;L into cash and
+        options legs, with Monte Carlo analysis and an interactive web demo.
+      </p>
+      <dl class="build__nums">
+        <div><dt>NumPy</dt><dd>SciPy · Matplotlib</dd></div>
+        <div><dt>Pytest</dt><dd>tested model</dd></div>
+        <div><dt>Live</dt><dd>demo on GitHub Pages</dd></div>
+      </dl>
+      <span class="build__go">nile-ore.github.io/manufactured-move →</span>
+    </a>
+  </div>
+</section>
+
+
+<!-- ================= 04 SIGNALS ================= -->
+<section class="section" id="signals">
+  <div class="section__head" data-reveal>
+    <span class="section__num">04</span>
     <h2 class="section__title">Signals</h2>
   </div>
 
   <div class="signals">
+    <div class="signal" data-reveal>
+      <span class="signal__v">3.5 yrs</span>
+      <span class="signal__k">Exchange infrastructure → buy side → crypto trading systems</span>
+    </div>
+    <div class="signal" data-reveal>
+      <span class="signal__v">Jane Street</span>
+      <span class="signal__k">Monthly Puzzle, November 2026 — solved, on the official leaderboard</span>
+    </div>
     <a class="signal signal--link" href="https://leetcode.com/u/nilesh_gahlot09/" target="_blank" rel="noopener" data-reveal>
       <span class="signal__v">600+</span>
       <span class="signal__k">LeetCode solved · 300-day streak · top 0.4%</span>
@@ -232,10 +288,10 @@
 </section>
 
 
-<!-- ================= 04 CONTACT ================= -->
+<!-- ================= 05 CONTACT ================= -->
 <section class="section" id="contact">
   <div class="section__head" data-reveal>
-    <span class="section__num">04</span>
+    <span class="section__num">05</span>
     <h2 class="section__title">Contact</h2>
   </div>
 
@@ -262,7 +318,7 @@
 </footer>
 
 <script>window.SCENE_FACE = 'assets/images/face.jpg';</script>
-<script src="assets/js/main.js?v=2026a" defer></script>
-<script type="module" src="assets/js/scene3d.js?v=2026d"></script>
+<script src="assets/js/main.js?v=2026k" defer></script>
+<script type="module" src="assets/js/scene3d.js?v=2027n"></script>
 </body>
 </html>
